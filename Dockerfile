@@ -5,7 +5,7 @@ RUN mkdir -p /app
 WORKDIR /app
 
 COPY Gemfile /app/Gemfile
-COPY Gemfile.lock /app/Gemfile.lock
+#COPY Gemfile.lock /app/Gemfile.lock
 
 RUN gem install bundler && bundle install --jobs 20 --retry 5
 
@@ -17,3 +17,4 @@ RUN bundle exec rake db:seed
 EXPOSE 3000
 
 CMD ls
+CMD bundle exec puma -C config/puma.rb
