@@ -1,5 +1,6 @@
-FROM ruby:3.0.1
-RUN apt-get update -qq && apt-get install -y nodejs
+FROM engineyard/kontainers:ruby-3.0.0-v1.0.0
+#FROM ruby:3.0.0
+RUN apt-get update -qq && apt-get install -y nodejs libsqlite3-dev shared-mime-info
 
 RUN mkdir -p /app
 WORKDIR /app
