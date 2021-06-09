@@ -1,5 +1,5 @@
 FROM engineyard/kontainers:ruby-3.0.0-v1.0.0
-RUN apt-get update -qq && apt-get install -y nodejs libsqlite3-dev shared-mime-info
+RUN apt-get update -qq && apt-get install -y nodejs libsqlite3-dev shared-mime-info tzdata
 
 RUN mkdir -p /app
 WORKDIR /app
@@ -13,7 +13,7 @@ COPY . /app
 
 RUN bundle exec rake db:migrate RAILS_ENV=development
 RUN bundle exec rake db:seed
-RUN ln -snf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && America/Los_Angels > /etc/timezone 
+RUN ln -snf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && "America/Los_Angels" > /etc/timezone 
 
 
 EXPOSE 3000
