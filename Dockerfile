@@ -13,6 +13,8 @@ COPY . /app
 
 RUN bundle exec rake db:migrate RAILS_ENV=development
 RUN bundle exec rake db:seed
+RUN ln -snf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && America/Los_Angels > /etc/timezone 
+
 
 EXPOSE 3000
 
